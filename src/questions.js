@@ -5,6 +5,7 @@ const questions = [
     choices: [
       `Initialize the client (Run only once in the beginning)`,
       `Create new bucket`,
+      `get all files currently in the bucket`,
       `List All Your Buckets`,
       `Get Public Key`,
       `Add a new file`,

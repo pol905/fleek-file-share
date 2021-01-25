@@ -6,6 +6,7 @@ import generateMasterToken from "./generateMasterToken.js";
 import getPublicKey from "./getPublicKey.js";
 import listBucket from "./listBucket.js";
 import questions from "./questions.js";
+import getFiles from "./getFiles.js";
 
 global.XMLHttpRequest = XMLRequest.XMLHttpRequest;
 
@@ -15,6 +16,8 @@ global.XMLHttpRequest = XMLRequest.XMLHttpRequest;
     answer.choice === `Initialize the client (Run only once in the beginning)`
   ) {
     generateMasterToken();
+  } else if (answer.choice === `get all files currently in the bucket`) {
+    getFiles();
   } else if (answer.choice === `Create new bucket`) {
     createBucket();
   } else if (answer.choice === `List All Your Buckets`) {
