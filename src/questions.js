@@ -31,6 +31,16 @@ const questions = [
     message: "Select a file to add to your bucket",
     suggestsOnly: false,
   },
+  {
+    type: "input",
+    name: "password",
+    message: "Enter a password",
+  },
+  {
+    type: "list",
+    name: "selectedFile",
+    message: "Select a file for which you want to create a public link",
+  },
 ];
 
 export default questions;

@@ -4,7 +4,6 @@ import fs from "fs-extra";
 const generateMasterToken = async () => {
   try {
     const initializeMasterAppTokenRes = await client.initializeMasterAppToken();
-    console.log("here");
     const token = initializeMasterAppTokenRes.getApptoken();
     try {
       await fs.remove("./masterToken.json");

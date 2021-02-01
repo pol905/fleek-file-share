@@ -10,12 +10,17 @@ const getFiles = async () => {
     ...questions[2],
     choices: buckets,
   });
-  console.log(bucketName);
   const res = await client.listDirectories({ bucket: bucketName }, metaData);
   const filesOrDirs = res.getEntriesList();
+  const files = {};
   filesOrDirs.forEach((fileOrDir) => {
-    console.log(fileOrDir.getName());
+    files[fileOrDir.getName()] = {
+      IPFShashV1: fileOrDir.getIpfshash(),
+      filePath: fileOrDir.getPath(),
+      isDirectory: fileOrDir.getIsdir(),
+    };
   });
+  return { files, bucketName };
 };
 
 export default getFiles;

@@ -7,25 +7,29 @@ import getPublicKey from "./getPublicKey.js";
 import listBucket from "./listBucket.js";
 import questions from "./questions.js";
 import getFiles from "./getFiles.js";
+import getPublicLink from "./getPublicLink.js";
 
 global.XMLHttpRequest = XMLRequest.XMLHttpRequest;
 
 (async () => {
-  const answer = await inquirer.prompt(questions[0]);
-  if (
-    answer.choice === `Initialize the client (Run only once in the beginning)`
-  ) {
+  const { choice } = await inquirer.prompt(questions[0]);
+  if (choice === `Initialize the client (Run only once in the beginning)`) {
     generateMasterToken();
-  } else if (answer.choice === `get all files currently in the bucket`) {
-    getFiles();
-  } else if (answer.choice === `Create new bucket`) {
+  } else if (choice === `get all files currently in the bucket`) {
+    const { files } = await getFiles();
+    for (let file in files) {
+      console.log(`${file} -----> ${files[file].IPFShashV1}`);
+    }
+  } else if (choice === `Create new bucket`) {
     createBucket();
-  } else if (answer.choice === `List All Your Buckets`) {
+  } else if (choice === `List All Your Buckets`) {
     const buckets = await listBucket();
     buckets.forEach((bucket) => console.log(bucket));
-  } else if (answer.choice === `Get Public Key`) {
+  } else if (choice === `Get Public Key`) {
     getPublicKey();
-  } else if (answer.choice === "Add a new file") {
+  } else if (choice === `Add a new file`) {
     addFile();
+  } else if (choice === `Get Public share Link`) {
+    const publicLink = await getPublicLink();
   }
 })();
