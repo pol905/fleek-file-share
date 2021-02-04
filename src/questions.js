@@ -3,13 +3,13 @@ const questions = [
     type: "list",
     name: "choice",
     choices: [
-      `Initialize the client (Run only once in the beginning)`,
       `Create new bucket`,
       `get all files currently in the bucket`,
       `List All Your Buckets`,
       `Get Public Key`,
       `Add a new file`,
       `Get Public share Link`,
+      `Open file using Public Link`,
     ],
   },
   {
@@ -40,6 +40,11 @@ const questions = [
     type: "list",
     name: "selectedFile",
     message: "Select a file for which you want to create a public link",
+  },
+  {
+    type: "input",
+    name: "publicLink",
+    message: "Enter the URL: ",
   },
 ];
 

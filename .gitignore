@@ -3,3 +3,4 @@ pictures_to_send
 node_modules
 yarn-error.log
 yarn.lock
+_out
