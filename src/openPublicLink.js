@@ -6,10 +6,11 @@ import fs from "fs-extra";
 import Ora from "ora";
 import chalk from "chalk";
 
-const openublicFile = async () => {
-  const { publicLink } = await inquirer.prompt(questions[6]);
-  const { password } = await inquirer.prompt(questions[4]);
-  const meta = await metaData;
+const openPublicFile = async (metaData) => {
+  const { publicLink, password } = await inquirer.prompt([
+    questions[6],
+    questions[4],
+  ]);
   const spinner = Ora();
   const p2 = /hash/;
 
@@ -24,7 +25,7 @@ const openublicFile = async () => {
         filename,
         password,
       },
-      meta
+      metaData
     );
     const tempPath = res.getLocation();
     await fs.ensureDir("../_out");
@@ -36,4 +37,4 @@ const openublicFile = async () => {
   }
 };
 
-export default openublicFile;
+export default openPublicFile;
