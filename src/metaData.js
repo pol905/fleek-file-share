@@ -10,7 +10,7 @@ const initializeDaemon = async () => {
     await generateMasterToken();
     spinner.succeed("Initialized space daemon successfully.");
   }
-  const { token } = fs.readJSONSync("./masterToken.json");
+  const { token } = fs.readJSONSync(process.cwd() + "//" + "masterToken.json");
   metaData = {
     authorization: `AppToken ${token}`,
   };
